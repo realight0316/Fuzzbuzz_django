@@ -1,2 +1,2 @@
 # Fuzzbuzz_django
-Fuzzbuzz_django server
+Fuzzbuzz 프로젝트 Django Server
