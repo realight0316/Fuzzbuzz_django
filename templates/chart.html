@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block title %} Fuzzbuzz Chart {% endblock%}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+    <div class='border mt-3 p-3 shadow'>
+        <canvas id="myChart2" width="400" height="400"></canvas>
+        <script>
+        var ctx2 = document.getElementById('myChart2').getContext('2d');
+        var myChart2 = new Chart(ctx2, {
+            data: {
+                labels: [{% for data in turdata %} '{{ data.input_time }}', {% endfor %}],
+                xAxisID: 'xx',
+                datasets: [{
+                    type: 'bar',
+                    label: '사용 빈도',
+                    data: [{% for data in turdata %} '{{ data.total_turn }}', {% endfor %}],
+                    borderColor: 'rgb(153, 153, 255)',
+                    backgroundColor: 'rgba(204, 204, 255, 0.5)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    },
+                    xx: {
+                        display: false
+                    }
+                }
+            }
+        });
+        </script>
+    </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class='border mt-3 p-3 shadow'>
+        <canvas id="myChart" width="400" height="400"></canvas>
+        <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            data: {
+                labels: [{% for data in condata %} '{{ data.input_time }}', {% endfor %}],
+                xAxisID: 'x1',
+                datasets: [{
+                    type: 'line',
+                    label: '혼잡률',
+                    data: [{% for data in condata %} '{{ data.value }}', {% endfor %}],
+                    fill: false,
+                    borderColor: '#FF0000',
+                    backgroundColor: '#FF0000',
+                    // borderColor: 'rgba(252, 169, 35, 99)'
+                    yAxisID: 'y'
+                }, {
+                    type: 'line',
+                    label: '방문자 수',
+                    data: [{% for data in condata %} '{{ data.people }}', {% endfor %}],
+                    borderColor: '#99ccff',
+                    backgroundColor: '#99ccFF',
+                    yAxisID: 'bar'
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        type: 'linear',
+                        position: 'left',
+                        max: 80
+                    },
+                    bar: {
+                        beginAtZero: true,
+                        type: 'linear',
+                        position: 'right',
+                        max: 10
+                    },
+                    x1: {
+                        display: false
+                    }
+                }
+            }
+        });
+        </script>
+        </div>
+    </div>
+
+    
+</div>
+{% endblock%}

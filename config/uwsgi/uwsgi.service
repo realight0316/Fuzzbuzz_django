@@ -1,0 +1,15 @@
+[Unit]
+Description=uWSGI service
+After=syslog.target
+
+[Service]
+ExecStart=/home/ec2-user/fuzzbuzz_env/env/bin/uwsgi -i /home/ec2-user/fuzzbuzz_env/fuzzbuzz_django/config/uwsgi/fuzzbuzz_django.ini
+
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
