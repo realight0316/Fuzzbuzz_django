@@ -1,5 +1,5 @@
 # Fuzzbuzz_django
-Fuzzbuzz 프로젝트 Django Server
+Fuzzbuzz 프로젝트 Django Server file
 
 
 ## 목차
