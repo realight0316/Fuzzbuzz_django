@@ -12,7 +12,7 @@ Fuzzbuzz 프로젝트 Django Server
 
 4. [REST API](#4-REST-API)
 
----
+
 
 ## 1. 서비스 환경 기본 정보
 
