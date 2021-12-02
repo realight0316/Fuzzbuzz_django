@@ -1,7 +1,9 @@
 # Fuzzbuzz_django
 팀 'Fuzzbuzz'의 'AWS와 Deep Learning을 활용한 공간 혼잡도'의 Django Server 파일을 다루고 있습니다.
 
-⛔ 2021.12.02 서비스 종료
+✅ 2021.09.16 프로젝트 돌입
+
+⛔ 2021.12.02 프로젝트 및 서비스 종료
 
 ## 목차
 
