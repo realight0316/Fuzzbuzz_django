@@ -1,5 +1,5 @@
 # Fuzzbuzz_django
-Fuzzbuzz 프로젝트 Django Server file
+Fuzzbuzz 프로젝트 Django Server
 
 
 ## 목차
@@ -10,7 +10,7 @@ Fuzzbuzz 프로젝트 Django Server file
 
 3. [데이터 베이스 구조](#3-데이터-베이스-구조)
 
-
+4. [REST API](#4-REST-API)
 
 ---
 
@@ -316,7 +316,7 @@ Fuzzbuzz 프로젝트 Django Server file
 
 Django 기본 생성 테이블 제외
 
-- fuzzbuzzdb.fuzzbuzz_app1_user_account
+- fuzzbuzz_app1_user_account : Django 사용자정보 커스텀 테이블
     
     
     | Field | Type | definition | note |
@@ -331,3 +331,72 @@ Django 기본 생성 테이블 제외
     | is_staff | tinyint | 스태프 권한 | 0 권한 없음, 1 권한 부여 |
     | is_admin | tinyint | 관리자 권한 | 0 권한 없음, 1 권한 부여 |
     | is_superuser | tinyint | Superuser 권한 | 0 권한 없음, 1 권한 부여 |
+- fuzzbuzz_app1_congestion_points_sh : DL-1 혼잡도 테이블
+    
+    
+    | Field | Type | definition | note |
+    | --- | --- | --- | --- |
+    | id | bigint | 데이터 고유 번호 | auto_increment, primary key |
+    | input_time | datetime | 입력일자 |  |
+    | value | double | 혼잡도 값 |  |
+    | people | int | 사람 수 |  |
+- fuzzbuzz_app1_congestion_points_hj : DL-2 혼잡도 테이블
+    
+    
+    | Field | Type | definition | note |
+    | --- | --- | --- | --- |
+    | id | bigint | 데이터 고유 번호 | auto_increment, primary key |
+    | input_time | datetime | 입력일자 |  |
+    | value | double | 혼잡도 값 |  |
+    | people | int | 사람 수 |  |
+- fuzzbuzz_app1_turnover_points_sh : DL-1 유입량 테이블
+    
+    
+    | Field | Type | definition | note |
+    | --- | --- | --- | --- |
+    | id | bigint | 데이터 고유 번호 | auto_increment, primary key |
+    | input_time | datetime | 입력일자 |  |
+    | total_turn | int | 신규 유입 횟수 |  |
+- fuzzbuzz_app1_questions : 서비스 FAQ 테이블
+    
+    
+    | Field | Type | definition | note |
+    | --- | --- | --- | --- |
+    | id | bigint | 데이터 고유 번호 | auto_increment, primary key |
+    | Q_text | longtext | FAQ 질문 |  |
+    | A_text | longtext | FAQ 답변 |  |
+    | time | datetime | 작성일자 |  |
+
+## 4. REST API
+
+- Android 어플리케이션 통신
+    
+    
+    | Method | URL | Definition |
+    | --- | --- | --- |
+    | POST | /app-con | 혼잡도 최신값 조회 |
+    | POST | /app-faq | FAQ 내용 조회 |
+- DeepLearning 데이터 통신
+    
+    
+    | Method | URL | Definition |
+    | --- | --- | --- |
+    | POST | /dl-con-sh | DL-1 혼잡도 산출값 입력 |
+    | POST | /dl-con-hj | DL-2 혼잡도 산출값 입력 |
+    | POST | /dl-cir-sh | DL-1 유입량 산출값 입력 |
+    | POST | /dl-cir-hj | DL-2 유입량 산출값 입력 |
+- Django 웹페이지 통신
+    
+    
+    | Method | URL | Definition |
+    | --- | --- | --- |
+    | POST | /app1/login | Django 웹페이지 로그인 |
+    | POST | /app1/signup | Django 웹페이지 회원가입 |
+    | POST | /app1/chart | DB연동 데이터 시각화 (차트) |
+
+## Developers
+
+- 권송미 (Android application / [https://github.com/songmik](https://github.com/songmik))
+- 김혜진 (Deep-Learning / [https://github.com/GIMEA](https://github.com/GIMEA))
+- 한성현 (Deep-Learning / [https://github.com/SaintSeong](https://github.com/SaintSeong))
+- 김진환 (Back-End / [https://github.com/realight0316](https://github.com/realight0316))
