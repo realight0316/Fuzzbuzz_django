@@ -19,7 +19,7 @@ Fuzzbuzz 프로젝트 Django Server
 - AWS
     - EC2 / Amazon Linux = 2
     - RDS / MySQL = 8.0.23
-- Django
+- Linux/Django
     - Python = 3.7.10
     - Django = 3.2.8
     - Django rest framework = 3.12.4
