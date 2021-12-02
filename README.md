@@ -23,7 +23,7 @@ Fuzzbuzz 프로젝트 Django Server
 
 ## 2. 디렉토리 구조
 
-```powershell
+```markdown
 .
 ├── config
 │   ├── nginx
